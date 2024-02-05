@@ -7,61 +7,61 @@
 
 ¿Qué es la lógica de programación y cómo aplicarla?
 
-CURSO
+<h4>CURSO</h4>
 
 Lógica de programación: sumérgete en la programación con JavaScript
 
-ARTÍCULO
+<h4>ARTÍCULO</h4>
 
 5 dudas de quien quiere iniciarse en la carrera de programación | Alura Cursos Online
 Lógica de programación: explorar funciones y listas.
 
-VIDEO
+<h4>VIDEO</h4>
 
 Cuándo usar let, var y const? #AluraMás - YouTube.
 
 <h3>Crea tus primeras páginas web.</h3>
 
-ARTÍCULO
+<h4>ARTÍCULO</h4>
 
 HTML, CSS y Javascript, ¿cuáles son las diferencias?
 
-CURSO
+<h4>CURSO</h4>
 
 HTML5 y CSS3 parte 1: Mi primera página web.
 
-CURSO
+<h4>CURSO</h4>
 
 HTML5 y CSS3 parte 2: Posicionamiento, listas y navegación.
 
-ARTÍCULO
+<h4>ARTÍCULO</h4>
 
 Centrar un elemento con CSS.
 
-CURSO
+<h4>CURSO</h4>
 
 HTML5 y CSS3 parte 3: Trabajando con formularios y tablas.
 
-CURSO
+<h4>CURSO</h4>
 
 HTML5 y CSS3 parte 4: Avanzando en CSS.
 
 
 <h3>Ganar experiencia con Git.</h3>
 
-ARTÍCULO
+<h4>ARTÍCULO</h4>
 
 Guía sobre cómo instalar Git en diferentes sistemas operativos | Alura Cursos Online.
 
-CURSO
+<h4>CURSO</h4>
 
 Git y GitHub: repositorio, commit y versiones.
 
-ARTÍCULO
+<h4>ARTÍCULO</h4>
 
 Iniciando un repositorio con Git.
 
-ARTÍCULO
+<h4>ARTÍCULO</h4>
 
 Buenas practicas en git: evitando errores | Alura Cursos Online.
 
