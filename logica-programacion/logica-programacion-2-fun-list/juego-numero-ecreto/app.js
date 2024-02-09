@@ -12,12 +12,13 @@
 let numeroAleatorio;
 let intentos = 1;
 const btnIntentar = document.getElementById("btnIntentar");
-const btn = document.getElementById("btn__iniciar");
+const btnIniciar = document.getElementById("btn__iniciar");
 const btnReiniciar = document.getElementById("reiniciar");
 let input = document.getElementById("numeroMaximoJuego");
 let numeroIntento;
 let numeroMaximoUsuario;
 let oportunidades;
+let listaNumerosSorteados = []; //
 
 //se crea funcion para agregar etiquetas html desde js
 function crearEtiquetas(etiquetaHtml, contenidoEtiqueta) {
@@ -33,14 +34,13 @@ crearEtiquetas(
 );
 
 // agregando evento click a boton
-btn.addEventListener("click", generaNumeroAleatorio);
+btnIniciar.addEventListener("click", generaNumeroAleatorio);
 
 //Se crea un numero aleatorio utilizanodo el numero maximo indicado por el usuario
 function generaNumeroAleatorio() {
-  numeroMaximoUsuario = parseInt(
-    document.getElementById("numeroMaximoJuego").value
-  );
+  numeroMaximoUsuario = parseInt(document.getElementById("numeroMaximoJuego").value);
   numeroAleatorio = Math.floor(Math.random() * (numeroMaximoUsuario + 1));
+  
   crearEtiquetas(
     "p",
     `¡introduce un número entre 1 y ${numeroMaximoUsuario}, tendras ${
@@ -51,8 +51,8 @@ function generaNumeroAleatorio() {
   console.log(`El numero aleatorio es ${numeroAleatorio}`);
 
   // Deshabilitar el botón
-  btn.disabled = true;
-  btn.style.backgroundColor = "gray";
+  btnIniciar.disabled = true;
+  btnIniciar.style.backgroundColor = "gray";
 
   // Deshabilitar el campo de entrada
 
@@ -99,8 +99,8 @@ function btnNuevoJuego() {
 }
 
 btnReiniciar.addEventListener("click", () => {
-  btn.disabled = false;
-  btn.style.backgroundColor = "#1875e8";
+  btnIniciar.disabled = false;
+  btnIniciar.style.backgroundColor = "#1875e8";
   input.disabled = false;
   input.style.backgroundColor = "white";
   input.focus();
