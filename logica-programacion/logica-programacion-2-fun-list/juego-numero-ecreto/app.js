@@ -14,9 +14,9 @@ let intentos = 1;
 const btnIntentar = document.getElementById("btnIntentar");
 const btnIniciar = document.getElementById("btn__iniciar");
 const btnReiniciar = document.getElementById("reiniciar");
-let input = document.getElementById("numeroMaximoJuego");
+let inputInicial = document.getElementById("numeroMaximoJuego");
+let numeroMaximoUsuario = parseInt(inputInicial.value);
 let numeroIntento;
-let numeroMaximoUsuario;
 let oportunidades;
 let listaNumerosSorteados = []; //
 
@@ -33,13 +33,34 @@ crearEtiquetas(
   "Introduce el numero máximo con el que quieras jugar (entre 50 y 100), tendras hasta 10 intentos para adivinar el número aleatorio que sera desde 1 y hasta el número indicado."
 );
 
-// agregando evento click a boton
-btnIniciar.addEventListener("click", generaNumeroAleatorio);
+// agregando evento click a boton iniciar 
+btnIniciar.addEventListener("click",  function() {
+  generaNumeroAleatorio();
+  condicionesIniciales()
+});
 
 //Se crea un numero aleatorio utilizanodo el numero maximo indicado por el usuario
 function generaNumeroAleatorio() {
   numeroMaximoUsuario = parseInt(document.getElementById("numeroMaximoJuego").value);
+  if (listaNumerosSorteados.length >= numeroMaximoUsuario + 1) {
+    crearEtiquetas("p","Todos los números ya han sido generados");
+    return;
+  }
   numeroAleatorio = Math.floor(Math.random() * (numeroMaximoUsuario + 1));
+  console.log(numeroAleatorio);
+  console.log(listaNumerosSorteados);
+  //se guarda en la lista numero generado y si no esta me lo devuelve, si no lo guarda y nos da otro
+  if (listaNumerosSorteados.includes(numeroAleatorio)) {
+    return generaNumeroAleatorio();//recursividad
+  } else {
+    listaNumerosSorteados.push(numeroAleatorio);
+    return numeroAleatorio;
+  }
+
+  
+}
+
+function condicionesIniciales(){
   
   crearEtiquetas(
     "p",
@@ -56,11 +77,15 @@ function generaNumeroAleatorio() {
 
   // Deshabilitar el campo de entrada
 
-  input.disabled = true;
-  input.style.backgroundColor = "gray";
+  inputInicial.disabled = true;
+  inputInicial.style.backgroundColor = "gray";
+  
+  //Habilitar botones i campo input de juego
 
-  return numeroAleatorio;
+  btnIntentar.disabled = false;
+  numeroIntento = document.querySelector("#numeroUsuario").removeAttribute("disabled");
 }
+
 
 //creando funcion del boton iniciar
 function verificarIntento() {
@@ -74,6 +99,7 @@ function verificarIntento() {
       }!`
     );
     crearEtiquetas("h2", "");
+    numeroIntento.disabled = true;
     btnNuevoJuego();
   } else {
     if (numeroIntento > numeroAleatorio) {
@@ -96,23 +122,52 @@ function borrarInput() {
 function btnNuevoJuego() {
   btnIntentar.disabled = true;
   btnReiniciar.disabled = false;
+  numeroIntento = document.getElementById("numeroUsuario").disabled = true;
+  btnIntentar.disabled = true;
 }
 
 btnReiniciar.addEventListener("click", () => {
   btnIniciar.disabled = false;
   btnIniciar.style.backgroundColor = "#1875e8";
-  input.disabled = false;
-  input.style.backgroundColor = "white";
-  input.focus();
+  inputInicial.disabled = false;
+  inputInicial.style.backgroundColor = "white";
+  inputInicial.focus();
   crearEtiquetas("h2", "Instrucciones");
   crearEtiquetas(
     ".texto__parrafo",
     "Introduce el numero máximo con el que quieras jugar (entre 50 y 100), tendras hasta 10 intentos para adivinar el número aleatorio que sera desde 1 y hasta el número indicado."
   );
   borrarInput();
-  btnIntentar.disabled = false;
+  btnIntentar.disabled = true;
   btnReiniciar.disabled = true;
   intentos = 1;
 });
+
+inputInicial.addEventListener("keydown", (e) => {
+  // Número 13 es el código de la tecla "Enter"
+  console.log(e.keyCode)
+  if (e.keyCode === 13) {
+    let valor = inputInicial.value.trim();
+    if (valor !== "" && !isNaN(valor) && valor != 0) {
+  //   e.preventDefault(); // Previene la acción por defecto (si existe)
+    generaNumeroAleatorio();
+    condicionesIniciales(); // Llama a tu función
+  } else{
+    crearEtiquetas("p", "Debes ingresar un numero")
+  }
+  }
+});
+
+numeroIntento = document.getElementById("numeroUsuario").addEventListener("keydown", (e) => {
+  console.log(e.keyCode)
+  if (e.keyCode === 13) {
+     {
+  //   e.preventDefault(); // Previene la acción por defecto (si existe)
+    verificarIntento() // Llama a tu función
+  } 
+  }
+
+}) 
+
 //asignando funcion al boton iniciar
 btnIntentar.addEventListener("click", verificarIntento);
